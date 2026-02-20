@@ -1,9 +1,10 @@
 import type { Education } from "@/types/cv";
 
 export default function EducationList({ items }: { items: Education[] }) {
+  const sorted = [...items].sort((a, b) => b.year - a.year);
   return (
     <ul className="space-y-5">
-      {items.map((item) => (
+      {sorted.map((item) => (
         <li key={item.id}>
           <div className="flex justify-between items-start gap-4">
             <div>
