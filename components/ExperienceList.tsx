@@ -13,15 +13,15 @@ export default function ExperienceList({ items }: { items: WorkExperience[] }) {
         <li key={item.id}>
           <div className="flex justify-between items-start gap-4">
             <div>
-              <p className="font-medium text-gray-900">{item.role}</p>
-              <p className="text-gray-600">{item.organization}</p>
+              <p className="font-medium text-gray-100">{item.role}</p>
+              <p className="text-gray-400">{item.organization}</p>
             </div>
             <p className="text-sm text-gray-500 whitespace-nowrap">
               {formatDate(item.startDate)} – {item.current ? "Present" : formatDate(item.endDate ?? "")}
             </p>
           </div>
           {item.description && (
-            <p className="mt-1 text-sm text-gray-600">{item.description}</p>
+            <p className="mt-1 text-sm text-gray-400">{item.description}</p>
           )}
         </li>
       ))}

@@ -17,7 +17,7 @@ export default function SkillsList({ items }: { items: Skill[] }) {
             {skills.map((skill) => (
               <span
                 key={skill.id}
-                className="px-2.5 py-0.5 bg-gray-100 text-gray-700 text-sm rounded-full"
+                className="px-2.5 py-0.5 bg-gray-800 text-gray-300 text-sm rounded-full"
               >
                 {skill.name}
               </span>
