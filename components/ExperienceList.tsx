@@ -7,9 +7,10 @@ function formatDate(dateStr: string): string {
 }
 
 export default function ExperienceList({ items }: { items: WorkExperience[] }) {
+  const sorted = [...items].sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime());
   return (
     <ul className="space-y-5">
-      {items.map((item) => (
+      {sorted.map((item) => (
         <li key={item.id}>
           <div className="flex justify-between items-start gap-4">
             <div>
