@@ -2,6 +2,7 @@ const COUNTRY_CODES: Record<string, string> = {
   // Asia
   "South Korea": "KR",
   "Korea": "KR",
+  "Republic of Korea": "KR",
   "Japan": "JP",
   "China": "CN",
   "Taiwan": "TW",
@@ -25,12 +26,15 @@ const COUNTRY_CODES: Record<string, string> = {
   "Norway": "NO",
   "Poland": "PL",
   "Czech Republic": "CZ",
+  "Republic of Czech": "CZ",
+  "Croatia": "HR",
   "Austria": "AT",
   "Belgium": "BE",
   "Hungary": "HU",
   "Russia": "RU",
   // Americas
   "United States": "US",
+  "United States of America": "US",
   "USA": "US",
   "Canada": "CA",
   "Mexico": "MX",
