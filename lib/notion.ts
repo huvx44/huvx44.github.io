@@ -37,6 +37,12 @@ function getDate(page: NotionPage, property: string): string {
   return p.date?.start ?? "";
 }
 
+function getRelationIds(page: NotionPage, property: string): string[] {
+  const p = (page as PageObjectResponse).properties?.[property];
+  if (!p || p.type !== "relation") return [];
+  return p.relation.map((r) => r.id);
+}
+
 function getCheckbox(page: NotionPage, property: string): boolean {
   const p = (page as PageObjectResponse).properties?.[property];
   if (!p || p.type !== "checkbox") return false;
@@ -84,15 +90,6 @@ export async function getCVData(): Promise<CVData> {
     category: getText(page, "Category"),
   }));
 
-  const projects: Project[] = projectsPages.map((page) => ({
-    id: (page as PageObjectResponse).id,
-    name: getText(page, "Name"),
-    startYear: Number(getText(page, "Start Year")) || undefined,
-    endYear: Number(getText(page, "End Year")) || undefined,
-    current: getCheckbox(page, "Current"),
-    experiment: getText(page, "Experiment") || undefined,
-  }));
-
   const publications: Publication[] = publicationPages.map((page) => ({
     id: (page as PageObjectResponse).id,
     title: getText(page, "Title"),
@@ -114,6 +111,21 @@ export async function getCVData(): Promise<CVData> {
     category: getText(page, "Category"),
     url: getText(page, "URL") || undefined,
   }));
+
+  const projects: Project[] = projectsPages.map((page) => {
+    const pubIds = getRelationIds(page, "Publications");
+    const presIds = getRelationIds(page, "Presentations");
+    return {
+      id: (page as PageObjectResponse).id,
+      name: getText(page, "Name"),
+      startYear: Number(getText(page, "Start Year")) || undefined,
+      endYear: Number(getText(page, "End Year")) || undefined,
+      current: getCheckbox(page, "Current"),
+      experiment: getText(page, "Experiment") || undefined,
+      publications: publications.filter((p) => pubIds.includes(p.id)),
+      presentations: presentations.filter((p) => presIds.includes(p.id)),
+    };
+  });
 
   return {
     personal: {

@@ -40,6 +40,8 @@ export interface Project {
   endYear?: number;
   current: boolean;
   experiment?: string;
+  publications: Publication[];
+  presentations: Presentation[];
 }
 
 export interface Publication {
