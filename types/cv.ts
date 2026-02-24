@@ -50,7 +50,7 @@ export interface Publication {
   authors: string;
   journal: string;
   year: number;
-  volume?: number;
+  volume?: string;
   page?: string;
   doi?: string;
   type: string;
