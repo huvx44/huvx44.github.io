@@ -41,6 +41,9 @@ export default function ProjectsList({ items }: { items: Project[] }) {
               )}
             </div>
           </div>
+          {item.experiment && (
+            <p className="mt-1 text-xs text-gray-500">Experiment: {item.experiment}</p>
+          )}
           {item.description && (
             <p className="mt-1 text-sm text-gray-400">{item.description}</p>
           )}

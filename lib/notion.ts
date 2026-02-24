@@ -93,6 +93,7 @@ export async function getCVData(): Promise<CVData> {
     startYear: Number(getText(page, "Start Year")) || undefined,
     endYear: Number(getText(page, "End Year")) || undefined,
     current: getCheckbox(page, "Current"),
+    experiment: getText(page, "Experiment") || undefined,
   }));
 
   const publications: Publication[] = publicationPages.map((page) => ({

@@ -42,6 +42,7 @@ export interface Project {
   startYear?: number;
   endYear?: number;
   current: boolean;
+  experiment?: string;
 }
 
 export interface Publication {
