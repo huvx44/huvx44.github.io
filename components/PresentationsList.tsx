@@ -1,5 +1,6 @@
 import type { Presentation } from "@/types/cv";
 import LatexText from "@/components/LatexText";
+import { countryFlag } from "@/lib/countryFlag";
 
 const TYPE_BADGE: Record<string, string> = {
   Oral: "bg-blue-900 text-blue-300",
@@ -10,6 +11,12 @@ function formatDate(dateStr: string): string {
   if (!dateStr) return "";
   const date = new Date(dateStr);
   return date.toLocaleDateString("en-US", { year: "numeric", month: "short" });
+}
+
+function formatLocation(city?: string, country?: string): string {
+  const flag = country ? countryFlag(country) : "";
+  const parts = [city, flag ? `${flag} ${country}` : country].filter(Boolean);
+  return parts.join(", ");
 }
 
 export default function PresentationsList({ items }: { items: Presentation[] }) {
@@ -48,7 +55,7 @@ export default function PresentationsList({ items }: { items: Presentation[] }) 
                   </span>
                 </div>
                 <p className="text-sm text-gray-400 mt-0.5">
-                  <LatexText text={[p.event, p.location, p.date ? formatDate(p.date) : ""].filter(Boolean).join(" · ")} />
+                  <LatexText text={[p.event, formatLocation(p.city, p.country), p.date ? formatDate(p.date) : ""].filter(Boolean).join(" · ")} />
                 </p>
               </li>
             ))}

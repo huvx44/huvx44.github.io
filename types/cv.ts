@@ -59,7 +59,8 @@ export interface Presentation {
   id: string;
   title: string;
   event: string;
-  location?: string;
+  city?: string;
+  country?: string;
   date: string;
   type: string;   // Oral | Poster
   category: string; // Conference | Seminar | Workshop
