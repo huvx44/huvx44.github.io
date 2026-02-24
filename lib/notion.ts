@@ -87,9 +87,6 @@ export async function getCVData(): Promise<CVData> {
   const projects: Project[] = projectsPages.map((page) => ({
     id: (page as PageObjectResponse).id,
     name: getText(page, "Name"),
-    description: getText(page, "Description") || undefined,
-    url: getText(page, "URL") || undefined,
-    tags: getMultiSelect(page, "Tags"),
     startYear: Number(getText(page, "Start Year")) || undefined,
     endYear: Number(getText(page, "End Year")) || undefined,
     current: getCheckbox(page, "Current"),

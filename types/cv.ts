@@ -36,9 +36,6 @@ export interface Skill {
 export interface Project {
   id: string;
   name: string;
-  description?: string;
-  url?: string;
-  tags: string[];
   startYear?: number;
   endYear?: number;
   current: boolean;
