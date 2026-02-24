@@ -107,7 +107,7 @@ export async function getCVData(): Promise<CVData> {
     event: getText(page, "Event"),
     city: getText(page, "City") || undefined,
     country: getText(page, "Country") || undefined,
-    date: getDate(page, "Date"),
+    year: Number(getText(page, "Year")),
     type: getText(page, "Type"),
     category: getText(page, "Category"),
     url: getText(page, "URL") || undefined,

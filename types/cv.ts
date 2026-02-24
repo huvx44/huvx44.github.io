@@ -61,7 +61,7 @@ export interface Presentation {
   event: string;
   city?: string;
   country?: string;
-  date: string;
+  year: number;
   type: string;   // Oral | Poster
   category: string; // Conference | Seminar | Workshop
   url?: string;

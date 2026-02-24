@@ -7,12 +7,6 @@ const TYPE_BADGE: Record<string, string> = {
   Poster: "bg-green-900 text-green-300",
 };
 
-function formatDate(dateStr: string): string {
-  if (!dateStr) return "";
-  const date = new Date(dateStr);
-  return date.toLocaleDateString("en-US", { year: "numeric", month: "short" });
-}
-
 function formatLocation(city?: string, country?: string): string {
   const flag = country ? countryFlag(country) : "";
   const parts = [city, flag ? `${flag} ${country}` : country].filter(Boolean);
@@ -20,7 +14,7 @@ function formatLocation(city?: string, country?: string): string {
 }
 
 export default function PresentationsList({ items }: { items: Presentation[] }) {
-  const sorted = [...items].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  const sorted = [...items].sort((a, b) => b.year - a.year);
 
   const grouped = sorted.reduce<Record<string, Presentation[]>>((acc, p) => {
     const key = p.category || "Other";
@@ -55,7 +49,7 @@ export default function PresentationsList({ items }: { items: Presentation[] }) 
                   </span>
                 </div>
                 <p className="text-sm text-gray-400 mt-0.5">
-                  <LatexText text={[p.event, formatLocation(p.city, p.country), p.date ? formatDate(p.date) : ""].filter(Boolean).join(" · ")} />
+                  <LatexText text={[p.event, formatLocation(p.city, p.country), p.year ? String(p.year) : ""].filter(Boolean).join(" · ")} />
                 </p>
               </li>
             ))}
