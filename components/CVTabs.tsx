@@ -10,7 +10,7 @@ import PublicationsList from "@/components/PublicationsList";
 import PresentationsList from "@/components/PresentationsList";
 import type { CVData } from "@/types/cv";
 
-const TAB_KEYS = ["experience", "education", "skills", "publications", "presentations", "projects"] as const;
+const TAB_KEYS = ["education", "experience", "projects", "publications", "presentations", "skills"] as const;
 type TabKey = typeof TAB_KEYS[number];
 
 const TAB_LABELS: Record<TabKey, string> = {
