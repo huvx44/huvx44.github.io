@@ -96,6 +96,8 @@ export async function getCVData(): Promise<CVData> {
     authors: getText(page, "Authors"),
     journal: getText(page, "Journal"),
     year: Number(getText(page, "Year")),
+    volume: Number(getText(page, "Volume")) || undefined,
+    page: getText(page, "Page") || undefined,
     doi: getText(page, "DOI") || undefined,
     type: getText(page, "Type"),
     status: getText(page, "Status"),

@@ -38,7 +38,12 @@ export default function PublicationsList({ items }: { items: Publication[] }) {
                 </p>
                 <p className="text-sm text-gray-400 mt-0.5"><LatexText text={pub.authors} /></p>
                 <p className="text-sm text-gray-500 italic">
-                  <LatexText text={`${pub.journal}${pub.journal && pub.type ? " · " : ""}${pub.type}`} />
+                  <LatexText text={[
+                    pub.journal,
+                    pub.volume ? `vol. ${pub.volume}` : "",
+                    pub.page ? `pp. ${pub.page}` : "",
+                    pub.type,
+                  ].filter(Boolean).join(" · ")} />
                 </p>
               </li>
             ))}
