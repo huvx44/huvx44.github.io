@@ -94,7 +94,7 @@ export async function getCVData(): Promise<CVData> {
     id: (page as PageObjectResponse).id,
     title: getText(page, "Title"),
     authors: getText(page, "Authors"),
-    venue: getText(page, "Venue"),
+    journal: getText(page, "Journal"),
     year: Number(getText(page, "Year")),
     doi: getText(page, "DOI") || undefined,
     type: getText(page, "Type"),

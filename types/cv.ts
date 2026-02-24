@@ -48,7 +48,7 @@ export interface Publication {
   id: string;
   title: string;
   authors: string;
-  venue: string;
+  journal: string;
   year: number;
   doi?: string;
   type: string;
