@@ -39,6 +39,9 @@ export interface Project {
   description?: string;
   url?: string;
   tags: string[];
+  startYear?: number;
+  endYear?: number;
+  current: boolean;
 }
 
 export interface Publication {
