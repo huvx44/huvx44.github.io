@@ -1,4 +1,5 @@
 import type { Presentation } from "@/types/cv";
+import LatexText from "@/components/LatexText";
 
 const TYPE_BADGE: Record<string, string> = {
   Oral: "bg-blue-900 text-blue-300",
@@ -38,18 +39,16 @@ export default function PresentationsList({ items }: { items: Presentation[] }) 
                   <p className="font-medium text-gray-100 leading-snug">
                     {p.url ? (
                       <a href={p.url} target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">
-                        {p.title}
+                        <LatexText text={p.title} />
                       </a>
-                    ) : p.title}
+                    ) : <LatexText text={p.title} />}
                   </p>
                   <span className={`shrink-0 text-xs px-2 py-0.5 rounded-full font-medium ${TYPE_BADGE[p.type] ?? "bg-gray-700 text-gray-400"}`}>
                     {p.type}
                   </span>
                 </div>
                 <p className="text-sm text-gray-400 mt-0.5">
-                  {p.event}
-                  {p.location ? ` · ${p.location}` : ""}
-                  {p.date ? ` · ${formatDate(p.date)}` : ""}
+                  <LatexText text={[p.event, p.location, p.date ? formatDate(p.date) : ""].filter(Boolean).join(" · ")} />
                 </p>
               </li>
             ))}

@@ -1,4 +1,5 @@
 import type { Project } from "@/types/cv";
+import LatexText from "@/components/LatexText";
 
 function formatPeriod(project: Project): string {
   if (!project.startYear) return "";
@@ -17,13 +18,13 @@ export default function ProjectsList({ items }: { items: Project[] }) {
       {sorted.map((item) => (
         <li key={item.id}>
           <div className="flex items-start justify-between gap-4">
-            <p className="font-medium text-gray-100">{item.name}</p>
+            <p className="font-medium text-gray-100"><LatexText text={item.name} /></p>
             {formatPeriod(item) && (
               <span className="text-sm text-gray-500 shrink-0">{formatPeriod(item)}</span>
             )}
           </div>
           {item.experiment && (
-            <p className="mt-0.5 text-xs text-gray-500">Experiment: {item.experiment}</p>
+            <p className="mt-0.5 text-xs text-gray-500">Experiment: <LatexText text={item.experiment} /></p>
           )}
         </li>
       ))}

@@ -1,4 +1,5 @@
 import type { Publication } from "@/types/cv";
+import LatexText from "@/components/LatexText";
 
 const STATUS_BADGE: Record<string, string> = {
   "In Press": "bg-yellow-900 text-yellow-300",
@@ -26,18 +27,18 @@ export default function PublicationsList({ items }: { items: Publication[] }) {
                 <p className="text-gray-100 font-medium leading-snug">
                   {pub.doi ? (
                     <a href={pub.doi} target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">
-                      {pub.title}
+                      <LatexText text={pub.title} />
                     </a>
-                  ) : pub.title}
+                  ) : <LatexText text={pub.title} />}
                   {pub.status !== "Published" && (
                     <span className={`ml-2 text-xs px-2 py-0.5 rounded-full font-normal ${STATUS_BADGE[pub.status] ?? "bg-gray-700 text-gray-400"}`}>
                       {pub.status}
                     </span>
                   )}
                 </p>
-                <p className="text-sm text-gray-400 mt-0.5">{pub.authors}</p>
+                <p className="text-sm text-gray-400 mt-0.5"><LatexText text={pub.authors} /></p>
                 <p className="text-sm text-gray-500 italic">
-                  {pub.venue}{pub.venue && pub.type ? " · " : ""}{pub.type}
+                  <LatexText text={`${pub.venue}${pub.venue && pub.type ? " · " : ""}${pub.type}`} />
                 </p>
               </li>
             ))}

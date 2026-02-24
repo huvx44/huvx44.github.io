@@ -1,13 +1,14 @@
 import type { PersonalInfo } from "@/types/cv";
+import LatexText from "@/components/LatexText";
 
 export default function CVHeader({ personal }: { personal: PersonalInfo }) {
   return (
     <header className="border-b border-gray-700 pb-6 mb-8">
-      <h1 className="text-3xl font-bold text-white">{personal.name}</h1>
-      <p className="text-lg text-gray-300 mt-1">{personal.title}</p>
-      <p className="text-gray-400 mt-0.5">{personal.institution}</p>
+      <h1 className="text-3xl font-bold text-white"><LatexText text={personal.name} /></h1>
+      <p className="text-lg text-gray-300 mt-1"><LatexText text={personal.title} /></p>
+      <p className="text-gray-400 mt-0.5"><LatexText text={personal.institution} /></p>
       {personal.bio && (
-        <p className="mt-3 text-gray-300 max-w-2xl">{personal.bio}</p>
+        <p className="mt-3 text-gray-300 max-w-2xl"><LatexText text={personal.bio} /></p>
       )}
       <div className="flex flex-wrap gap-4 mt-4 text-sm text-gray-400">
         {personal.email && (
